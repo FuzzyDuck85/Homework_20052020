@@ -1,4 +1,3 @@
-require('pg')
 require_relative('../db/sql_runner.rb')
 require_relative('./album.rb')
 
@@ -44,12 +43,10 @@ end
 def self.find(id)
   sql = "SELECT * FROM artists WHERE id = $1"
   values = [id]
-  db.prepare("find", sql)
-  results = SqlRunner.run(sql, values)
-  db.close()
-  artist_hash = results.first
-  artist = Customer.new(artist_hash)
-  return artist
+  result = SqlRunner.run(sql, values)
+  artist_hash = result.first
+  found_artist = Artist.new(artist_hash)
+  return found_artist
 end
 
 def self.delete_all()
@@ -60,7 +57,7 @@ end
 def self.all()
   sql = "SELECT * FROM artists"
   artists = SqlRunner.run(sql)
-  return artists.map {|artist| Customer.new(artist)}
+  return artists.map {|artist| Artist.new(artist)}
 end
 
 end

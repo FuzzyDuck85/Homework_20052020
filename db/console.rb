@@ -65,6 +65,8 @@ artist2.album()
 album01.artist()
 album23.artist()
 
+everything_at_once = Album.find(album08.id)
+queen = Artist.find(artist2.id)
 
 binding.pry
 nil
