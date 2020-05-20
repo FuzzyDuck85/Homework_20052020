@@ -1,10 +1,9 @@
-require("pry")
-require_relative("../models/album")
-require_relative("../models/artist")
+require('pry')
+require_relative('../models/album')
+require_relative('../models/artist')
 
 Album.delete_all()
 Artist.delete_all()
-
 
 artist1 = Artist.new({'name' => 'Travis'})
 artist2 = Artist.new({'name' => 'Queen'})
@@ -64,9 +63,9 @@ artist2.album()
 
 album01.artist()
 album23.artist()
-
-everything_at_once = Album.find(album08.id)
-queen = Artist.find(artist2.id)
+#
+# everything_at_once = Album.find(album08.id)
+# queen = Artist.find(artist2.id)
 
 binding.pry
 nil
